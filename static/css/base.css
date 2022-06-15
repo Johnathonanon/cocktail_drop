@@ -18,7 +18,7 @@ body {
 }
 
 .purple-bg {
-    background-color: rgba(147,27,153,0.8);
+    background-color: rgba(147,27,153,0.4);
 }
 
 .black-bg {
@@ -52,7 +52,7 @@ body {
 }
 
 .searchbar {
-    background-color: rgba(144,158,139, 0.8);
+    background-color: rgba(144,158,139, 0.4);
 }
 
 .search-btn {
@@ -62,7 +62,8 @@ body {
 }
 
 .search-btn:hover {
-    border-color: #931b99;
+    border-color: #d3d8d1;
+    background-color: #d3d8d1;
 }
 
 .icon {
