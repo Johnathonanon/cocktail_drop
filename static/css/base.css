@@ -1,0 +1,87 @@
+html {
+    height: 100%;
+    font-family: 'Poppin', sans-serif;
+    font-weight: 300;
+}
+
+body {
+    background: url('/media/background_index.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #d3d8d1;
+    height: 100vh;
+}
+
+.logo {
+    text-transform: uppercase;
+    color: #d3d8d1;
+    font-weight: 300;
+}
+
+.purple-bg {
+    background-color: rgba(147,27,153,0.8);
+}
+
+.black-bg {
+    background-color: rgba(24,9,12,0.8);
+}
+
+.nav-link {
+    color: #d3d8d1;
+}
+
+.nav-link:hover,
+.nav-link:active,
+.nav-link:focus {
+    color: #d3d8d1;
+}
+
+.navbar-toggler {
+    border-color: #d3d8d1;
+    color: #d3d8d1;
+}
+
+.dropdown-item {
+    color: #d3d8d1;
+    text-transform: uppercase;
+    font-size: large;
+}
+
+.dropdown-item:hover {
+    color: #931b99;
+    background-color: #d3d8d1;
+}
+
+.searchbar {
+    background-color: rgba(144,158,139, 0.8);
+}
+
+.search-btn {
+    background-color: #931b99; 
+    color: #d3d8d1;
+    border-color: #931b99;
+}
+
+.search-btn:hover {
+    border-color: #931b99;
+}
+
+.icon {
+    color: #d3d8d1;
+}
+
+.search-btn:hover .icon {
+    color: #931b99;
+}
+
+.shop-button {
+    background-color: #d3d8d1;
+    color: #931b99;
+    min-width: 260px;
+}
+
+.shop-button:hover,
+.shop-button:active,
+.shop-button:focus {
+    background-color: #931b99;
+    color: #d3d8d1;
+}

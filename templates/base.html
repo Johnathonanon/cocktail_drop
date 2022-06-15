@@ -2,53 +2,119 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
 
-    {% block meta %}
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% endblock %}
+<head>
 
-    {% block extra_meta %}
-    {% endblock %}
+  {% block meta %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% endblock %}
 
-    {% block corecss %}
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    {% endblock %}
+  {% block extra_meta %}
+  {% endblock %}
 
-    {% block extra_css %}
-    {% endblock %}
+  {% block corecss %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% endblock %}
 
-    {% block corejs %}
-      <script src="https://kit.fontawesome.com/357f501abd.js" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    {% endblock %}
+  {% block extra_css %}
+  {% endblock %}
 
-    {% block extra_js %}
-    {% endblock %}
+  {% block corejs %}
+    <script src="https://kit.fontawesome.com/357f501abd.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+  {% endblock %}
 
-    <title>Cocktail Drop {% block extra_title %}{% endblock %}</title>
+  {% block extra_js %}
+  {% endblock %}
 
-  </head>
+  <title>Cocktail Drop {% block extra_title %}{% endblock %}</title>
 
-  <body>
+</head>
 
-    <header class="container-fluid fixed-top"></header>
+<body>
+    <nav class="navbar navbar-expand-lg purple-bg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <h2 class="logo my-auto">Cocktail<i class="fa-solid fa-martini-glass"></i>Drop</h2>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="text-center">
+                  <div><i class="fa-solid fa-user fa-lg"></i></div>
+                  <p class="my-0">My Account</p>
+                </div>
+              </a>
+              <ul class="dropdown-menu text-center border-0 rounded-0 my-2 purple-bg" aria-labelledby="navbarDropdown">
+              {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <a href="" class="dropdown-item my-2">Product Management</a>
+              {% endif %}
+              <a href="" class="dropdown-item mb-2">My Profile</a>
+              <a href="{% url 'account_logout' %}" class="dropdown-item my-2">Logout</a>
+              {% else %}
+              <a href="{% url 'account_signup' %}" class="dropdown-item my-2">Register</a>
+              <a href="{% url 'account_login' %}" class="dropdown-item my-2">Login</a>
+              {% endif %}
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="{% if grand_total %}text-info font-weight-bold{% endif %} nav-link" href="">
+                <div class="text-center">
+                  <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
+                  <p class="my-0">
+                    {% if grand_total %}
+                    €{{ grand_total|floatformat:2 }}
+                    {% else %}
+                    €0.00
+                    {% endif %}
+                  </p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="searchbar">
+      <div class="col-10 col-md-6 py-5 px-auto mx-auto">
+        <form method="GET" action="">
+          <div class="input-group w-100">
+              <input class="form-control border rounded-0" type="text" name="q" placeholder="Search products">
+              <div class="input-group-append">
+                  <button class="form-control btn search-btn rounded-0" type="submit">
+                    <i class="fas fa-search icon"></i>
+                  </button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
-    {% if messages %}
-      <div class="message-container"></div>
-    {% endif %}
+  {% if messages %}
+  <div class="message-container"></div>
+  {% endif %}
 
-    {% block page_header %}
-    {% endblock %}
+  {% block page_header %}
+  {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+  {% block content %}
+  {% endblock %}
 
-    {% block postloadjs %}
-    {% endblock %}
+  {% block postloadjs %}
+  {% endblock %}
 
-  </body>
+</body>
+
 </html>
