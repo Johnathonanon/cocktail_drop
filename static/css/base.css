@@ -94,3 +94,13 @@ body {
     background-color: #931b99;
     color: #d3d8d1;
 }
+
+.footer {
+    background-color: #d3d8d1;
+    color: #931b99;
+}
+
+.footer i {
+    font-size: 1.5rem;
+    color: #931b99;
+}
