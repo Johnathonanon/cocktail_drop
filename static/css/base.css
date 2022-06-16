@@ -1,5 +1,4 @@
 html {
-    height: 100%;
     font-family: 'Poppin', sans-serif;
     font-weight: 300;
 }
@@ -8,7 +7,7 @@ body {
     background: url('/media/background_index.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #d3d8d1;
-    height: 100vh;
+    height: 100%;
 }
 
 .logo {
@@ -22,7 +21,7 @@ body {
 }
 
 .black-bg {
-    background-color: rgba(24,9,12,0.8);
+    background-color: rgba(24,9,12,0.9);
 }
 
 .nav-link {
