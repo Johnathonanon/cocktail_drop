@@ -74,6 +74,11 @@ body {
     color: #931b99;
 }
 
+.text-box {
+    font-weight: 300;
+    font-size: 1.8rem;
+}
+
 .shop-button {
     background-color: #d3d8d1;
     color: #931b99;

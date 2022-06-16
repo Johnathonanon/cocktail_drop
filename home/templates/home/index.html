@@ -2,28 +2,39 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <div class="black-bg rounded-0">
-                    <h3 class="display-5 p-4 logo">
-                        Delicious cocktails delivered straight to you
-                    </h3>
-                </div>
-                <div class="my-5">
-                    <h4>
-                        <a href="" class="shop-button btn btn-lg text-uppercase rounded-0">View Menu</a>
-                    </h4>
-                </div>
+<div class="container h-100">
+    <div class="row h-25">
+        <div class="col-12 col-md-6 my-auto ms-auto">
+            <div class="black-bg rounded-0">
+                <h5 class="display-5 p-4 text-box">
+                    Welcome to Cocktail Drop, 
+                    Dublins premier cocktail delivery service. 
+                    We provide a large range of fresh cocktails, made from the freshest ingredients.
+                </h5>
             </div>
         </div>
     </div>
+    <div class="row h-75">
+        <div class="col-7 col-md-6 my-auto">
+            <div class="black-bg rounded-0">
+                <h4 class="display-5 p-4 text-box">
+                    Delicious cocktails delivered straight to your door
+                </h4>
+            </div>
+            <div class="my-5">
+                <h4>
+                    <a href="" class="shop-button btn btn-lg text-uppercase rounded-0">View Menu <i class="fa-solid fa-arrow-right"></i></a>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
