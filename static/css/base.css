@@ -75,14 +75,18 @@ body {
 }
 
 .text-box {
+    max-height: max-content;
+}
+
+.inner-text {
     font-weight: 300;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .shop-button {
     background-color: #d3d8d1;
     color: #931b99;
-    min-width: 260px;
+    max-width: 100%;
 }
 
 .shop-button:hover,
