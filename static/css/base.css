@@ -105,6 +105,10 @@ body {
     color: #931b99;
 }
 
+.privacy a {
+    text-decoration: none;
+}
+
 /* Mailchimp */
 #mc_embed_signup { 
     border: 1px solid #931b99;
