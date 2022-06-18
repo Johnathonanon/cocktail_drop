@@ -35,8 +35,7 @@ body {
 }
 
 .navbar-toggler {
-    border-color: #d3d8d1;
-    color: #d3d8d1;
+    border-color: rgba(144,158,139, 0.6);
 }
 
 .dropdown-item {
