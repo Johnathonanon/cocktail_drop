@@ -104,3 +104,10 @@ body {
     font-size: 1.5rem;
     color: #931b99;
 }
+
+/* Mailchimp */
+#mc_embed_signup { 
+    border: 1px solid #931b99;
+    clear:left; 
+    font:14px 'Poppin', sans-serif; 
+}
