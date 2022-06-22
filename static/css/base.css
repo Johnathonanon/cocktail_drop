@@ -10,6 +10,10 @@ body {
     height: 100%;
 }
 
+hr {
+    color: #de979f;
+}
+
 .logo {
     text-transform: uppercase;
     color: #d3d8d1;
@@ -92,6 +96,20 @@ body {
 .shop-button:focus {
     background-color: #931b99;
     color: #d3d8d1;
+}
+
+.product-bg {
+    background: rgba(52,49,31, 0.8);
+}
+
+.card {
+    border: 1px #d3d8d1 groove;
+    border-radius: 0;
+}
+
+.card p,
+.card small {
+    color: #931b99;
 }
 
 .footer {
