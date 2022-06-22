@@ -7,6 +7,7 @@ class Category(models.Model):
     """ Category model """
 
     class Meta:
+        """ Meta class """
         verbose_name_plural = 'Categories'
 
     name = models.CharField(max_length=254)
