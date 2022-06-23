@@ -105,12 +105,12 @@
     </nav>
     <div class="grey-bg">
       <div class="col-10 col-md-6 py-4 px-auto mx-auto">
-        <form method="GET" action="">
+        <form method="GET" action="{% url 'products' %}">
           <div class="input-group w-100">
               <input class="form-control border rounded-0" type="text" name="q" placeholder="Search products">
               <div class="input-group-append">
                   <button class="form-control btn search-btn rounded-0" type="submit">
-                    <i class="fas fa-search icon"></i>
+                    <i class="fa-solid fa-search icon"></i>
                   </button>
               </div>
           </div>
