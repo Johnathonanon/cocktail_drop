@@ -60,9 +60,12 @@
               </a>
               <ul class="dropdown-menu text-center border-0 rounded-0 my-2 purple-bg" aria-labelledby="navbarDropdown1">
               <a href="{% url 'products' %}" class="dropdown-item mb-2">All</a>
-              <a href="#" class="dropdown-item my-2">Rum</a>
-              <a href="#" class="dropdown-item my-2">Vodka</a>
-              <a href="#" class="dropdown-item my-2">Gin</a>
+              <a href="{% url 'products' %}?category=rum" class="dropdown-item my-2">Rum</a>
+              <a href="{% url 'products' %}?category=vodka" class="dropdown-item my-2">Vodka</a>
+              <a href="{% url 'products' %}?category=gin" class="dropdown-item my-2">Gin</a>
+              <a href="{% url 'products' %}?category=whiskey" class="dropdown-item my-2">Whiskey</a>
+              <a href="{% url 'products' %}?category=brandy" class="dropdown-item my-2">Brandy</a>
+              <a href="{% url 'products' %}?category=tequila" class="dropdown-item my-2">Tequila</a>
               </ul>
             </li>
             <li class="nav-item dropdown">
