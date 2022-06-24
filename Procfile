@@ -1,1 +1,1 @@
-web: gunicorn cocktail-drop.wsgi:application
+web: gunicorn cocktail_drop.wsgi:application
