@@ -109,6 +109,7 @@ span a{
 
 .product-bg {
     background: rgba(52,49,31, 0.8);
+    min-height: 50vh;
 }
 
 .card {
@@ -174,6 +175,23 @@ select option:active {
 .privacy a {
     color: #931b99;
 }
+
+/* From Boutique Ado */
+.btt-button {
+    height: 44px;
+    width: 44px;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background-color: #931b99;
+    border: 1px solid #d3d8d1
+}
+
+.btt-link {
+    cursor: pointer;
+    color: #d3d8d1;
+}
+
 
 /* Mailchimp */
 #mc_embed_signup { 

@@ -28,6 +28,7 @@
 
   {% block corejs %}
     <script src="https://kit.fontawesome.com/357f501abd.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
@@ -51,7 +52,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown dropstart">
               <a class="nav-link" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="text-center">
                   <div><i class="fa-solid fa-book-open fa-lg"></i></div>
@@ -68,7 +69,7 @@
               <a href="{% url 'products' %}?category=tequila&sort=rating&direction=desc" class="dropdown-item my-2">Tequila</a>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown dropstart">
               <a class="nav-link" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="text-center">
                   <div><i class="fa-solid fa-user fa-lg"></i></div>
