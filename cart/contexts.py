@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 def cart_contents(request):
-    """ """
+    """ Cart contents function """
     cart_items = []
     total = 0
     product_count = 0
