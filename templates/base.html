@@ -59,7 +59,7 @@
                   <p class="my-0">Menu</p>
                 </div>
               </a>
-              <ul class="dropdown-menu text-center border-0 rounded-0 my-2 purple-bg" aria-labelledby="navbarDropdown1">
+              <ul class="dropdown-menu text-center border-0 rounded-0 my-2 dropdown-bg" aria-labelledby="navbarDropdown1">
               <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item mb-2">All</a>
               <a href="{% url 'products' %}?category=rum&sort=rating&direction=desc" class="dropdown-item my-2">Rum</a>
               <a href="{% url 'products' %}?category=vodka&sort=rating&direction=desc" class="dropdown-item my-2">Vodka</a>
@@ -76,7 +76,7 @@
                   <p class="my-0">My Account</p>
                 </div>
               </a>
-              <ul class="dropdown-menu text-center border-0 rounded-0 my-2 purple-bg" aria-labelledby="navbarDropdown2">
+              <ul class="dropdown-menu text-center border-0 rounded-0 my-2 dropdown-bg" aria-labelledby="navbarDropdown2">
               {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
               <a href="" class="dropdown-item my-2">Product Management</a>
