@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: url('/media/background_img.jpg') no-repeat center center fixed;
+    background: url('{% if DEBUG %}/media/background_img.jpg{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1656267527/media/background_img_bx5qrf.jpg{% endif %}') no-repeat center center fixed;
     background-size: cover;
     color: #d3d8d1;
     height: 100vh;
