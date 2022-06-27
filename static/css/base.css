@@ -203,6 +203,32 @@ select option:active {
     font-weight: 400;
 }
 
+.cart-btn {
+    background-color: #d3d8d1;
+    color: #931b99;
+    max-width: 100%;
+}
+
+.cart-btn:hover,
+.cart-btn:active,
+.cart-btn:focus {
+    background-color: #0EA5B0;
+    color: black;
+}
+
+.checkout-btn {
+    background-color: #931b99; 
+    color: #d3d8d1;
+    border-color: #d3d8d1;
+}
+
+.checkout-btn:hover,
+.checkout-btn:active,
+.checkout-btn:focus {
+    background-color: #0EA5B0;
+    color: black;
+}
+
 /* -------------------- Footer */
 .footer {
     background-color: #d3d8d1;
