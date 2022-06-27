@@ -114,6 +114,21 @@ span a{
     color: #d3d8d1;
 }
 
+.quantity-btn {
+    background-color: #d3d8d1;
+}
+
+.quantity-btn:hover,
+.quantity-btn:active,
+.quantity-btn:focus {
+    background-color: #d3d8d1;
+}
+
+.quantity-btn span {
+    color: #931b99;
+}
+
+
 /* -------------------- Products */
 
 .product-bg {
