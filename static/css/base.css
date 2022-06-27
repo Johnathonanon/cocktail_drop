@@ -74,12 +74,13 @@ span a{
 .search-btn {
     background-color: #931b99; 
     color: #d3d8d1;
-    border-color: #931b99;
+    border-color: #d3d8d1;
 }
 
 .search-btn:hover {
     border-color: #d3d8d1;
     background-color: #d3d8d1;
+    color: #931b99;
 }
 
 .icon {
