@@ -212,7 +212,7 @@ select option:active {
 .cart-btn:hover,
 .cart-btn:active,
 .cart-btn:focus {
-    background-color: #0EA5B0;
+    background-color: #0dcaf0;
     color: black;
 }
 
@@ -225,7 +225,7 @@ select option:active {
 .checkout-btn:hover,
 .checkout-btn:active,
 .checkout-btn:focus {
-    background-color: #0EA5B0;
+    background-color: #0dcaf0;
     color: black;
 }
 

@@ -38,8 +38,8 @@
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col-12">
-                                <p class="mx-auto p-2 fs-5">Quantity:</p>
-                                <div class="form-group w-50 p-2">
+                                <p class="my-1 p-2 fs-5">Quantity:</p>
+                                <div class="form-group w-50 p-2 mb-2">
                                     <div class="input-group">
                                         <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                                     </div>
@@ -50,7 +50,7 @@
                                 <a href="{% url 'products' %}" class="search-btn btn text-uppercase rounded-0 m-2">
                                     <i class="fa-solid fa-arrow-left"></i> Keep Shopping
                                 </a>
-                                <input type="submit" class="float-end cart-btn btn text-uppercase rounded-0 m-2" value="Add to Cart">
+                                <input type="submit" class="cart-btn btn text-uppercase rounded-0 m-2" value="Add to Cart">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
