@@ -204,6 +204,23 @@ select option:active {
     color: #d3d8d1;
 }
 
+/* toasts */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
 /* -------------------- Cart */
 .cart-bg {
     background: #E1E6DF;
