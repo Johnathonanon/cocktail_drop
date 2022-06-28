@@ -197,7 +197,9 @@ select option:active {
     border: 1px solid #d3d8d1
 }
 
-.btt-link {
+.btt-link,
+.update-link,
+.remove-item {
     cursor: pointer;
     color: #d3d8d1;
 }
