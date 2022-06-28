@@ -207,6 +207,7 @@ select option:active {
 /* -------------------- Cart */
 .cart-bg {
     background: #E1E6DF;
+    min-height: 50vh;
 }
 
 .cart-logo {

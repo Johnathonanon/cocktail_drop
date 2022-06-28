@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cart_tools %}
 
 {% block content %}
     <div class="container-fluid cart-bg mx-auto">
@@ -39,7 +40,7 @@
                                     <p class="my-0">€{{ item.product.price }}</p>
                                 </td>
                                 <td class="p-2 w-25">
-                                    <form class="form update-form" method="POST" action="">
+                                    <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <div class="input-group input-group-{{ item.item_id }}">
@@ -69,7 +70,7 @@
                                     <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                 </td>
                                 <td class="p-2 w-25">
-                                    <p class="my-0">€{{ item.product.price }}</p>
+                                    <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                 </td>
                             </tr>
                         {% endfor %}
