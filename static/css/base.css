@@ -186,7 +186,7 @@ select option:active {
     background: #d3d8d1;
 }
 
-/* From Boutique Ado */
+/* -------------------- From Boutique Ado */
 .btt-button {
     height: 44px;
     width: 44px;
@@ -206,6 +206,10 @@ select option:active {
 
 /* toasts */
 
+.toast-text {
+    color: #5016A6;
+}
+
 .message-container {
     position: fixed;
     top: 72px;
@@ -218,7 +222,13 @@ select option:active {
 }
 
 .toast-capper {
-    height: 2px;
+    height: 4px;
+}
+
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* -------------------- Cart */
