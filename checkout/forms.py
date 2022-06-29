@@ -1,4 +1,5 @@
 """ checkout forms file """
+import datetime
 
 from django import forms
 from .models import Order
@@ -9,10 +10,12 @@ class OrderForm(forms.ModelForm):
     class Meta:
         """ meta class """
         model = Order
+
+        readonly_fields = ('city', 'county', 'country')
+
         fields = ('full_name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
-                  'town_or_city', 'postcode', 'country',
-                  'county', 'delivery_date', 'timeslot')
+                  'postcode', 'delivery_date', 'timeslot')
 
     def __init__(self, *args, **kwargs):
         """
@@ -24,12 +27,11 @@ class OrderForm(forms.ModelForm):
             'full_name': 'Full Name',
             'email': 'Email Address',
             'phone_number': 'Phone Number',
-            'country': 'Country',
             'postcode': 'Postal Code',
-            'town_or_city': 'Town or City',
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
-            'county': 'County',
+            'delivery_date': datetime.date.today,
+            'timeslot': '1'
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
