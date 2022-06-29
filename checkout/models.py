@@ -1,11 +1,40 @@
 """ Checkout models file """
 import uuid
+import datetime
 
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 
 from products.models import Product
+
+
+class DeliverySlot(models.Model):
+    """ Delivery slot model """
+
+    class Meta:
+        """ Meta class """
+        unique_together = ('date', 'timeslot')
+
+    TIMESLOT_LIST = (
+        (0, '10:00 - 11:00'),
+        (1, '11:00 - 12:00'),
+        (2, '12:00 - 13:00'),
+        (3, '13:00 - 14:00'),
+        (4, '14:00 - 15:00'),
+        (5, '15:00 - 16:00'),
+        (6, '16:00 - 17:00'),
+        (7, '17:00 - 18:00'),
+        (8, '18:00 - 19:00'),
+        (9, '19:00 - 20:00'),
+        (10, '20:00 - 21:00'),
+    )
+
+    date = models.DateField(help_text="YYYY-MM-DD")
+    timeslot = models.IntegerField(choices=TIMESLOT_LIST)
+
+    def __str__(self):
+        return f'{self.timeslot}'
 
 
 class Order(models.Model):
@@ -29,6 +58,20 @@ class Order(models.Model):
         (D12, 'Dublin 12'),
     ]
 
+    TIMESLOT_CHOICES = [
+        (0, '10:00 - 11:00'),
+        (1, '11:00 - 12:00'),
+        (2, '12:00 - 13:00'),
+        (3, '13:00 - 14:00'),
+        (4, '14:00 - 15:00'),
+        (5, '15:00 - 16:00'),
+        (6, '16:00 - 17:00'),
+        (7, '17:00 - 18:00'),
+        (8, '18:00 - 19:00'),
+        (9, '19:00 - 20:00'),
+        (10, '20:00 - 21:00'),
+    ]
+
     order_number = models.CharField(max_length=32, null=False, editable=False)
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
@@ -42,6 +85,9 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(
         max_length=6, null=False, default='Dublin', editable=False)
+    delivery_date = models.DateField(help_text="DD-MM-YYYY",
+                                     default=datetime.date.today)
+    timeslot = models.IntegerField(choices=TIMESLOT_CHOICES, default=8)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0)
@@ -85,13 +131,15 @@ class Order(models.Model):
 
 class OrderLineItem(models.Model):
     """ Line item model """
-    order = models.ForeignKey(
-        Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
+    order = models.ForeignKey(Order, null=False, blank=False,
+                              on_delete=models.CASCADE,
+                              related_name='lineitems')
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
-    lineitem_total = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
+                                         null=False, blank=False,
+                                         editable=False)
 
     def save(self, *args, **kwargs):
         """
@@ -103,33 +151,3 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
-
-
-class DeliverySlot(models.Model):
-    """ Delivery slot model """
-
-    class Meta:
-        """ Meta class """
-        unique_together = ('order', 'date', 'timeslot')
-
-    TIMESLOT_LIST = (
-        (0, '10:00 - 11:00'),
-        (1, '11:00 - 12:00'),
-        (2, '12:00 - 13:00'),
-        (3, '13:00 - 14:00'),
-        (4, '14:00 - 15:00'),
-        (5, '15:00 - 16:00'),
-        (6, '16:00 - 17:00'),
-        (7, '17:00 - 18:00'),
-        (8, '18:00 - 19:00'),
-        (9, '19:00 - 20:00'),
-        (10, '20:00 - 21:00'),
-    )
-
-    order = models.ForeignKey(
-        Order, null=False, blank=False, on_delete=models.CASCADE, related_name='order')
-    date = models.DateField(help_text="YYYY-MM-DD")
-    timeslot = models.IntegerField(choices=TIMESLOT_LIST)
-
-    def __str__(self):
-        return f'{self.timeslot} on order {self.order.order_number}'
