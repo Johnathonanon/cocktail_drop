@@ -48,6 +48,18 @@ class Order(models.Model):
     D8 = 'Dublin 8'
     D12 = 'Dublin 12'
 
+    CITY = [
+        (1, 'Dublin')
+    ]
+
+    COUNTY = [
+        (1, 'Dublin')
+    ]
+
+    COUNTRY = [
+        (1, 'Ireland')
+    ]
+
     POSTCODE_CHOICES = [
         (D1, 'Dublin 1'),
         (D2, 'Dublin 2'),
@@ -76,18 +88,17 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
-    country = models.CharField(max_length=40, null=False, blank=False,
-                               default='Dublin', editable=False)
     postcode = models.CharField(
         max_length=10, choices=POSTCODE_CHOICES, default=D2)
     city = models.CharField(
-        max_length=6, null=False, default='Dublin', editable=False)
+        max_length=10, choices=CITY, default=1)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(
-        max_length=6, null=False, default='Dublin', editable=False)
-    delivery_date = models.DateField(help_text="DD-MM-YYYY",
-                                     default=datetime.date.today)
+        max_length=10, choices=COUNTY, default=1)
+    country = models.CharField(
+        max_length=10, choices=COUNTRY, default=1)
+    delivery_date = models.DateField(default=datetime.date.today)
     timeslot = models.IntegerField(choices=TIMESLOT_CHOICES, default=8)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(
@@ -109,7 +120,7 @@ class Order(models.Model):
         accounting for delivery costs.
         """
         self.order_total = self.lineitems.aggregate(
-            Sum('lineitem_total'))['lineitem_total__sum']
+            Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = settings.STANDARD_DELIVERY_COST
         else:
@@ -124,6 +135,7 @@ class Order(models.Model):
         """
         if not self.order_number:
             self.order_number = self._generate_order_number()
+
         super().save(*args, **kwargs)
 
     def __str__(self):
