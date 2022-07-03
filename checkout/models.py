@@ -48,18 +48,6 @@ class Order(models.Model):
     D8 = 'Dublin 8'
     D12 = 'Dublin 12'
 
-    CITY = [
-        (1, 'Dublin')
-    ]
-
-    COUNTY = [
-        (1, 'Dublin')
-    ]
-
-    COUNTRY = [
-        (1, 'Ireland')
-    ]
-
     POSTCODE_CHOICES = [
         (D1, 'Dublin 1'),
         (D2, 'Dublin 2'),
@@ -90,14 +78,14 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     postcode = models.CharField(
         max_length=10, choices=POSTCODE_CHOICES, default=D2)
-    city = models.CharField(
-        max_length=10, choices=CITY, default=1)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(
-        max_length=10, choices=COUNTY, default=1)
+        max_length=10, default='Co. Dublin', null=False, blank=False)
     country = models.CharField(
-        max_length=10, choices=COUNTRY, default=1)
+        max_length=10, default='Ireland', null=False, blank=False)
+    eircode = models.CharField(
+        max_length=7, null=False, blank=False, default='EIRCODE')
     delivery_date = models.DateField(default=datetime.date.today)
     timeslot = models.IntegerField(choices=TIMESLOT_CHOICES, default=8)
     date = models.DateTimeField(auto_now_add=True)

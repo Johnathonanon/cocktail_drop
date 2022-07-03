@@ -25,21 +25,23 @@ def checkout(request):
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
-            'country': request.POST['country'],
+            'country': request.POST.get('country'),
             'postcode': request.POST['postcode'],
-            'city': request.POST['city'],
+            'city': request.POST.get('city'),
             'street_address1': request.POST['street_address1'],
             'street_address2': request.POST['street_address2'],
-            'county': request.POST['county'],
+            'county': request.POST.get('county'),
+            'eircode': request.POST['eircode'],
             'delivery_date': request.POST['delivery_date'],
             'timeslot': request.POST['timeslot'],
         }
         order_form = OrderForm(form_data)
+        print(form_data)
         if order_form.is_valid():
             order = order_form.save()
             for item_id, quantity in cart.items():
                 try:
-                    product = Product.objects.get(id=item_id)
+                    product = get_object_or_404(Product, id=item_id)
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
@@ -61,6 +63,7 @@ def checkout(request):
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
+            print(order_form.errors)
     else:
         cart = request.session.get('cart', {})
         if not cart:

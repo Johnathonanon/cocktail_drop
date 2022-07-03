@@ -14,14 +14,13 @@ class OrderAdmin(admin.ModelAdmin):
     """ order admin class """
     inlines = (OrderLineItemAdminInline,)
 
-    readonly_fields = ('order_number', 'city', 'county',
+    readonly_fields = ('order_number', 'county',
                        'country', 'date',
                        'delivery_cost', 'order_total',
                        'grand_total',)
 
     fields = ('order_number', 'date', 'full_name',
-              'email', 'phone_number',
-              'city', 'county',
+              'email', 'phone_number', 'county',
               'postcode', 'street_address1',
               'street_address2', 'delivery_date',
               'timeslot', 'delivery_cost',
