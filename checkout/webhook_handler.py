@@ -13,6 +13,8 @@ class WebhookHandler:
         """
         Handle a generic/unknown/unexpected webhook event
         """
+        intent = event.data.object
+        print(intent)
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
@@ -21,6 +23,8 @@ class WebhookHandler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+        intent = event.data.object
+        print(intent)
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)

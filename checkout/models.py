@@ -83,7 +83,7 @@ class Order(models.Model):
     county = models.CharField(
         max_length=10, default='Co. Dublin', null=False, blank=False)
     country = models.CharField(
-        max_length=10, default='Ireland', null=False, blank=False)
+        max_length=10, default='IE', null=False, blank=False)
     eircode = models.CharField(
         max_length=7, null=False, blank=False, default='EIRCODE')
     delivery_date = models.DateField(default=datetime.date.today)
