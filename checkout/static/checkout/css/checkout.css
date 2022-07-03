@@ -2,6 +2,10 @@
     color: #5016A6;
 }
 
+.order-confirmation-wrapper {
+  border: 1px solid #931b99;
+}
+
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;

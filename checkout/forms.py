@@ -29,9 +29,9 @@ class OrderForm(forms.ModelForm):
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
             'postcode': 'Postal Code',
+            'eircode': 'Eircode',
             'county': 'County',
             'country': 'Country',
-            'eircode': 'Eircode',
             'delivery_date': datetime.date.today,
             'timeslot': '1',
         }
