@@ -197,6 +197,17 @@ select option:active {
     background: #d3d8d1;
 }
 
+/* -------------------- Product Management */
+.product-management-bg {
+    background: #E1E6DF;
+    color: #5016A6;
+}
+
+.product-form-input {
+    border-color: #931b99;
+    border-radius: 0;
+}
+
 /* -------------------- From Boutique Ado */
 .btt-button {
     height: 44px;
