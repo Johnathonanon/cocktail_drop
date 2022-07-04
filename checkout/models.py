@@ -83,7 +83,8 @@ class Order(models.Model):
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     postcode = models.CharField(
-        max_length=10, choices=POSTCODE_CHOICES, default='')
+        max_length=10, choices=POSTCODE_CHOICES,
+        default='', null=False, blank=False)
     county = models.CharField(
         max_length=10, default='Co. Dublin', null=False, blank=False)
     country = models.CharField(

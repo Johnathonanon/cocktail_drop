@@ -26,6 +26,10 @@ a {
     text-decoration: none;
 }
 
+th, td {
+    color: #5016A6;
+}
+
 span a{
     color: #d3d8d1;
 }

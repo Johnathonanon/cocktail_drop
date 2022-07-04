@@ -30,7 +30,7 @@ class OrderForm(forms.ModelForm):
             'street_address2': 'Street Address 2',
             'postcode': 'Postal Code',
             'eircode': 'Eircode',
-            'county': 'County',
+            'county': 'Co. Dublin',
             'country': 'Country',
             'delivery_date': datetime.date.today,
             'timeslot': '1',

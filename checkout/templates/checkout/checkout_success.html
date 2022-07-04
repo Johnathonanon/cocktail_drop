@@ -197,9 +197,15 @@
 
         <div class="row">
             <div class="col-12 col-lg-7 text-right">
-				<a href="{% url 'products' %}" class="shop-button btn btn-lg text-uppercase rounded-0 my-2">
+                {% if from_profile %}
+                <a href="{% url 'profile' %}" class="shop-button btn btn-lg text-uppercase rounded-0 my-2">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Profile
+                </a>
+				{% else %}
+                <a href="{% url 'products' %}" class="shop-button btn btn-lg text-uppercase rounded-0 my-2">
                     <i class="fa-solid fa-arrow-left"></i> Keep Shopping
                 </a>
+                {% endif %}
 			</div>
         </div>
     </div>
