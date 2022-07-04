@@ -94,7 +94,7 @@
             <ul class="dropdown-menu text-center border-0 rounded-0 my-2 dropdown-bg" aria-labelledby="navbarDropdown2">
               {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
-              <a href="" class="dropdown-item my-2">Product Management</a>
+              <a href="{% url 'add_product' %}" class="dropdown-item my-2">Product Management</a>
               {% endif %}
               <a href="{% url 'profile' %}" class="dropdown-item mb-2">My Profile</a>
               <a href="{% url 'account_logout' %}" class="dropdown-item my-2">Logout</a>
