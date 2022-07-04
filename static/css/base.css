@@ -11,6 +11,13 @@ body {
     height: 100vh;
 }
 
+h1, h2, h3,
+h4, h5, 
+h6, p {
+    font-family: 'Poppin', sans-serif;
+    font-weight: 500;
+}
+
 hr {
     color: #de979f;
 }
@@ -272,6 +279,43 @@ select option:active {
 .checkout-btn:focus {
     background-color: #0dcaf0;
     color: black;
+}
+
+/* -------------------- Profile */
+.auth-container {
+    min-height: 50vh;
+    max-width: 600px;
+    background: #d3d8d1;
+    color: #5016A6;
+}
+
+.auth-container input {
+    border-color: #5016A6;
+    border-radius: 0;
+    max-width: 500px;
+}
+
+.auth-container a {
+    color: #931b99;
+}
+
+.auth-btn {
+    border: 1px solid #5016A6;
+    color: #931b99;
+}
+
+.auth-btn:hover {
+    border: 1px solid #5016A6;
+    background: #5016A6;
+    color: #d3d8d1;
+}
+
+.auth-container input::placeholder {
+    color: rgba(80, 22, 166, 0.5);
+}
+
+.auth-container label:not([for='id_remember']) {
+    display: none;
 }
 
 /* -------------------- Footer */

@@ -30,7 +30,7 @@
 }
 
 .stripe-style-input::placeholder {
-    color: #aab7c4;
+    color: rgba(80, 22, 166, 0.5);
 }
 
 .fieldset-label {

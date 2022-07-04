@@ -4,8 +4,9 @@
 
 {% block head_title %}{% trans "E-mail Addresses" %}{% endblock %}
 
-{% block content %}
-    <h1>{% trans "E-mail Addresses" %}</h1>
+{% block inner_content %}
+<h2 class="my-4">{% trans "E-mail Addresses" %}</h2>
+<hr class="w-75 mx-auto">
 {% if user.emailaddress_set.all %}
 <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
 
@@ -31,9 +32,9 @@
   {% endfor %}
 
 <div class="buttonHolder">
-      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
-      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
-      <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
+      <button class="secondaryAction auth-btn btn rounded-0" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
+      <button class="secondaryAction auth-btn btn rounded-0" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
+      <button class="primaryAction auth-btn btn rounded-0" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
 </div>
 
 </fieldset>
@@ -45,12 +46,12 @@
 {% endif %}
 
   {% if can_add_email %}
-    <h2>{% trans "Add E-mail Address" %}</h2>
+    <h2 class="my-4">{% trans "Add E-mail Address" %}</h2>
 
     <form method="post" action="{% url 'account_email' %}" class="add_email">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+        {{ form|crispy }}
+        <button class="auth-btn btn rounded-0" name="action_add" type="submit">{% trans "Add E-mail" %}</button>
     </form>
   {% endif %}
 
