@@ -282,6 +282,25 @@ select option:active {
 }
 
 /* -------------------- Profile */
+.profile-bg {
+    background: #d3d8d1;
+    color: #5016A6;
+    border-bottom: 2px solid #931b99;
+    min-height: 50vh;
+}
+
+
+.profile-form-input {
+    border-color: #931b99;
+    border-radius: 0;
+    max-width: 500px;
+}
+
+.profile-form-input::placeholder {
+    color: rgba(80, 22, 166, 0.5);
+}
+
+/* -------------------- Allauth */
 .auth-container {
     min-height: 50vh;
     max-width: 600px;

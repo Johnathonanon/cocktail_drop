@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid cart-bg mx-auto">
+    <div class="container-fluid profile-bg mx-auto">
         <div class="row ">
             <div class="col">
                 <hr>
@@ -14,6 +14,21 @@
                 <hr>
             </div>
         </div>
-        {{ profile }}
+        
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <p>Default Delivery Information</p>
+                <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="auth-btn btn rounded-0 text-uppercase">Update Information</button>
+                </form>
+            </div>
+            <div class="col-12 col-lg-6">
+                <p>Order History</p>
+                {{ orders }}
+            </div>
+        </div>
+
     </div>
 {% endblock %}

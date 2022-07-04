@@ -37,11 +37,12 @@ class UserProfile(models.Model):
     default_street_address2 = models.CharField(
         max_length=80, null=True, blank=True)
     default_postcode = models.CharField(
-        max_length=10, choices=POSTCODE_CHOICES, default=D2)
-    default_county = models.CharField(max_length=80, null=True, blank=True)
+        max_length=10, choices=POSTCODE_CHOICES, default='')
+    default_county = models.CharField(
+        max_length=80, null=True, blank=True, default='Co. Dublin')
     default_eircode = models.CharField(
         max_length=7, null=True, blank=True, default='')
-    country = models.CharField(
+    default_country = models.CharField(
         max_length=10, default='IE', null=True, blank=True)
 
     def __str__(self):
