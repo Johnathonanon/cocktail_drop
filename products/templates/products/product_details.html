@@ -19,6 +19,12 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4 p-0">
                 <div class="product-details-container h-80 my-5">
+                    {% if request.user.is_superuser %}
+                        <small class="float-end m-3 p-1" style="background:#E1E6DF">
+                            <a style="color:blue" href="{% url 'edit_product' product.id %}">Edit</a> | 
+                            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                        </small>
+                    {% endif %}
                     <p class="my-2 fs-3 p-2">{{ product.name }}</p>
                     <p class="lead my-1 text-left fw-bold p-2">€{{ product.price }}</p>
                     {% if product.category %}
