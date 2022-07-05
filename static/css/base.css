@@ -103,6 +103,13 @@ span a{
 }
 
 /* -------------------- Index */ 
+.delivery-banner {
+    background: #E5E040;
+    max-height: 40px;
+    max-width: 100%;
+    color: black;
+}
+
 .text-box {
     max-height: max-content;
 }
@@ -216,7 +223,8 @@ select option:active {
     bottom: 16px;
     right: 16px;
     background-color: #931b99;
-    border: 1px solid #d3d8d1
+    border: 1px solid #d3d8d1;
+    z-index: 100;
 }
 
 .btt-link,
@@ -266,7 +274,7 @@ select option:active {
 }
 
 .cart-text {
-    color: #931b99;
+    color: #5016A6;
     font-weight: 400;
 }
 
