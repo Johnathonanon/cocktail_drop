@@ -388,3 +388,19 @@ select option:active {
     font-family: 'Poppin', sans-serif;
     font-weight: 300;
 }
+
+/* Media queries */
+
+@media(hover: hover) {
+    .checkout-btn:hover {
+        background-color: #0dcaf0;
+        color: black;
+    }
+}
+
+@media(hover: none) {
+    .checkout-btn:active {
+        transform: scale(0.9);
+        transition: .1s;
+    }
+}
