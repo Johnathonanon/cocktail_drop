@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="delivery-banner m-0 row text-center">
+    <h4 class="my-1">Free delivery on orders over €{{ free_delivery_threshold }}!</h4>
+</div>
+
+<div class="container-fluid">
+
+    <div class="row h-25">
+        <div class="col-8 col-md-6 my-4 text-box">
+            <div class="black-bg rounded-0">
+                <h5 class="p-4 inner-text">
+                    Sorry, the page you are looking for isn't available.
+                </h5>
+            </div>
+            <div class="my-4">
+                <h4>
+                    <a href="{% url 'products' %}?sort=rating&direction=desc" class="shop-button btn btn-lg text-uppercase rounded-0"><i class="fa-solid fa-arrow-left"> Return</i></a>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
