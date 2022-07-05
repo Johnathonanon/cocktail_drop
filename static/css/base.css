@@ -381,3 +381,10 @@ select option:active {
     clear:left; 
     font:14px 'Poppin', sans-serif; 
 }
+
+/* -------------------- 404 */
+.container-404 {
+    min-height: 50vh;
+    font-family: 'Poppin', sans-serif;
+    font-weight: 300;
+}
