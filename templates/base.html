@@ -11,7 +11,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
     content="Cocktail Drop is Dublins premier cocktail delivery service. We deliver delicious cocktails straight to you" />
-  <meta name="keywords" content="Cocktail, cocktails, dublin, delivery, drinks, fresh, tasty, party, menu">
+  <meta name="keywords"
+    content="Cocktail, cocktails, dublin, delivery, drinks, fresh, tasty, party, menu, cocktail delivery dublin, cocktails dublin, drinks dublin, cocktail delivery, cocktail menu, fresh cocktails">
   {% endblock %}
 
   {% block extra_meta %}
@@ -69,12 +70,10 @@
             </a>
             <ul class="dropdown-menu text-center border-0 rounded-0 my-2 dropdown-bg" aria-labelledby="navbarDropdown1">
               <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item mb-2">All</a>
-              <a href="{% url 'products' %}?category=rum&sort=rating&direction=desc" 
-                class="dropdown-item my-2">Rum</a>
+              <a href="{% url 'products' %}?category=rum&sort=rating&direction=desc" class="dropdown-item my-2">Rum</a>
               <a href="{% url 'products' %}?category=vodka&sort=rating&direction=desc"
                 class="dropdown-item my-2">Vodka</a>
-              <a href="{% url 'products' %}?category=gin&sort=rating&direction=desc" 
-                class="dropdown-item my-2">Gin</a>
+              <a href="{% url 'products' %}?category=gin&sort=rating&direction=desc" class="dropdown-item my-2">Gin</a>
               <a href="{% url 'products' %}?category=whiskey&sort=rating&direction=desc"
                 class="dropdown-item my-2">Whiskey</a>
               <a href="{% url 'products' %}?category=brandy&sort=rating&direction=desc"
@@ -140,17 +139,17 @@
   {% if messages %}
   <div class="message-container">
     {% for message in messages %}
-      {% with message.level as level %}
-          {% if level == 40 %}
-              {% include 'includes/toasts/error_toast.html' %}
-          {% elif level == 30 %}
-              {% include 'includes/toasts/warning_toast.html' %}
-          {% elif level == 25 %}
-              {% include 'includes/toasts/success_toast.html' %}
-          {% else %}
-              {% include 'includes/toasts/info_toast.html' %}
-          {% endif %}
-      {% endwith %}
+    {% with message.level as level %}
+    {% if level == 40 %}
+    {% include 'includes/toasts/error_toast.html' %}
+    {% elif level == 30 %}
+    {% include 'includes/toasts/warning_toast.html' %}
+    {% elif level == 25 %}
+    {% include 'includes/toasts/success_toast.html' %}
+    {% else %}
+    {% include 'includes/toasts/info_toast.html' %}
+    {% endif %}
+    {% endwith %}
     {% endfor %}
   </div>
   {% endif %}
