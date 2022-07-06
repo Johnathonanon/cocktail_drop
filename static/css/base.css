@@ -159,8 +159,8 @@ span a{
     border-radius: 0;
 }
 
-.card p,
-.card small {
+.product-card p,
+.product-card small {
     color: #931b99;
 }
 
@@ -327,7 +327,12 @@ select option:active {
 .blog-bg {
     background: rgba(189, 190, 217, 0.8);
     min-height: 50vh;
-    color: #5016A6;
+    color: #333459;
+}
+
+.blog-card {
+    border: 1px solid #333459;
+    color: #333459;
 }
 
 /* -------------------- Allauth */

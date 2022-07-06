@@ -123,7 +123,7 @@
   </nav>
   <div class="grey-bg">
     <div class="col-10 col-md-6 py-4 px-auto mx-auto">
-      <form method="GET" action="{% url 'products' %}">
+      <form method="GET" action="{% if BLOG %} {% url 'blog' %} {% else %} {% url 'products' %} {% endif %}">
         <div class="input-group w-100">
           <input class="form-control border rounded-0" type="text" name="q" placeholder="Search products">
           <div class="input-group-append">

@@ -10,7 +10,6 @@ class Post(models.Model):
     STATUS = ((0, "Draft"), (1, "Published"))
 
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, related_name="blog_posts")
     updated_on = models.DateTimeField(auto_now=True)

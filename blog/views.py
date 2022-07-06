@@ -9,6 +9,8 @@ from .models import Post
 def all_posts(request):
     """ view showing all blog posts """
 
+    BLOG = True
+
     posts = Post.objects.filter(status=1).order_by('-created_on')
     query = None
 
@@ -17,7 +19,7 @@ def all_posts(request):
             query = request.GET['q']
             if not query:
                 messages.error(request, "Please enter search criteria")
-                return redirect(reverse('posts'))
+                return redirect(reverse('blog'))
 
             queries = Q(title__icontains=query) | Q(
                 content__icontains=query)
