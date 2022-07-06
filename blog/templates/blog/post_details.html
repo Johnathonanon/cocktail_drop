@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid blog-bg">
+        <div class="row">
+            <div class="col-10 col-md-6 mx-auto">
+                <div class="row mx-auto py-4">
+                    {% if post.image %}
+                        <img class="img-fluid" src="{{ post.image.url }}" alt="{{ post.name }}">
+                        {% else %}
+                        <img class="img-fluid" src="/media/defaultblogimg.jpg" alt="{{ post.name }}">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-10 col-md-6 mx-auto">
+                <div class="row blog-container mx-auto my-4">
+                    <h5 class="my-auto p-2 text-center">{{ post.title }}</h5>
+                    <p class="py-0">{{ post.author }}</p>
+                    <small class="py-0">{{ post.created_on }}</small>
+                    <p class="py-4">{{ post.content }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
