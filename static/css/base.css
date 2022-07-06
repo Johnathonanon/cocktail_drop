@@ -323,6 +323,13 @@ select option:active {
     color: rgba(80, 22, 166, 0.5);
 }
 
+/* -------------------- Blog */ 
+.blog-bg {
+    background: rgba(189, 190, 217, 0.8);
+    min-height: 50vh;
+    color: #5016A6;
+}
+
 /* -------------------- Allauth */
 .auth-container {
     min-height: 50vh;
