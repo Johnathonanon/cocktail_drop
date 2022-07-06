@@ -336,7 +336,13 @@ select option:active {
 }
 
 .blog-container {
-    background: #d3d8d1;
+    background: #E1E6DF;
+    border: 1px solid #333459;
+}
+
+.blog-form-input{
+    border-color: #333459;
+    border-radius: 0;
 }
 
 /* -------------------- Allauth */
