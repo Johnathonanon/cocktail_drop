@@ -35,8 +35,8 @@
                         </a>
                     </p>
                     {% endif %}
-                    {% if product.rating %}
-                        <small class="p-2"><i class="fas fa-star my-1"></i>{{ product.rating }} / 5</small>
+                    {% if rating.rating %}
+                        <small class="p-2"><i class="fas fa-star my-1"></i>User Rating: {{ product.averagerating }} / 5</small>
                     {% else %}
                         <small class="p-2">No Rating</small>
                     {% endif %}

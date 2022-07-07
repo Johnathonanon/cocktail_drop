@@ -66,9 +66,10 @@ def product_details(request, product_id):
     """ View showing individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-
+    rating = Rating.objects.get(product=product)
     context = {
         'product': product,
+        'rating': rating,
     }
 
     return render(request, 'products/product_details.html', context)
