@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.db.models import Avg, Count
+from django.core.validators import MaxValueValidator, MinValueValidator
 from profiles.models import UserProfile
 
 
@@ -33,18 +34,18 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
 
-    def averagereview(self):
-        """ calculates average review rating """
-        review = Review.objects.filter(
+    def averagerating(self):
+        """ calculates average product rating """
+        review = Rating.objects.filter(
             product=self).aggregate(average=Avg('rating'))
         avg = 0
         if review["average"] is not None:
             avg = float(review["average"])
         return avg
 
-    def countreview(self):
+    def countrating(self):
         """ counts reviews """
-        reviews = Review.objects.filter(
+        reviews = Rating.objects.filter(
             product=self).aggregate(count=Count('id'))
         cnt = 0
         if reviews["count"] is not None:
@@ -61,7 +62,8 @@ class Rating(models.Model):
         UserProfile, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='ratings')
     product = models.ForeignKey(Product, models.CASCADE, null=True, blank=True)
-    rating = models.IntegerField(default=1)
+    rating = models.PositiveSmallIntegerField(
+        default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def __str__(self):
         return f'This rating is for {self.product}'

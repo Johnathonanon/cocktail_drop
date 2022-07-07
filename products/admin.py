@@ -1,6 +1,6 @@
 """ Products app admin """
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, Rating
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -25,5 +25,14 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
+class RatingAdmin(admin.ModelAdmin):
+    """ Rating admin class """
+    list_display = (
+        'product',
+        'rating',
+    )
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Rating, RatingAdmin)

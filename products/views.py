@@ -17,6 +17,7 @@ def all_products(request):
     categories = None
     sort = None
     direction = None
+    ratings = Rating.objects.all()
 
     if request.GET:
         if 'sort' in request.GET:
@@ -52,6 +53,7 @@ def all_products(request):
 
     context = {
         'products': products,
+        'ratings': ratings,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
