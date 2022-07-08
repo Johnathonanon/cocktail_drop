@@ -38,6 +38,7 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = (
         'heading',
         'comment',
+        'get_product',
         'created_on',
     )
 

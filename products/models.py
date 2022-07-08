@@ -41,10 +41,16 @@ class Product(models.Model):
         return avg_rating
 
     def count_rating(self):
-        """ counts reviews """
+        """ counts ratings """
         rating_count = self.rating_set.all().count()
         print(rating_count)
         return rating_count
+
+    def count_review(self):
+        """ counts reviews """
+        review_count = self.review_set.all().count()
+        print(review_count)
+        return review_count
 
     def __str__(self):
         return str(self.name)
@@ -76,6 +82,10 @@ class Review(models.Model):
     heading = models.CharField(max_length=100, null=True, blank=True)
     comment = models.TextField(max_length=250, null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
+
+    def get_product(self):
+        """ get product name for admin """
+        return ",".join([str(p) for p in self.product.all()])
 
     def __str__(self):
         return str(self.heading)

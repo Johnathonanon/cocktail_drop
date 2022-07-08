@@ -1,6 +1,6 @@
 """ products app forms file """
 from django import forms
-from .models import Product, Category, Rating
+from .models import Product, Category, Rating, Review
 
 
 class ProductForm(forms.ModelForm):
@@ -38,3 +38,15 @@ class RatingForm(forms.ModelForm):
 
         self.fields['rating'].widget.attrs['min'] = 1
         self.fields['rating'].widget.attrs['max'] = 5
+
+
+class ReviewForm(forms.ModelForm):
+    """ product review form class """
+    class Meta:
+        """ meta class """
+        model = Review
+        exclude = ('user_profile',)
+        fields = (
+            'heading',
+            'comment',
+        )

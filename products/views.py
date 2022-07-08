@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category
-from .forms import ProductForm, RatingForm
+from .forms import ProductForm, RatingForm, ReviewForm
 
 
 def all_products(request):
@@ -142,7 +142,7 @@ def delete_product(request, product_id):
 
 
 def rate_product(request, product_id):
-    """ allows user to review product """
+    """ allows user to rate product """
     if request.user.username == 'AnonymousUser':
         messages.error(request, 'Sorry, only registered users can do that.')
         return redirect(reverse('home'))
@@ -160,6 +160,36 @@ def rate_product(request, product_id):
                 Please ensure the form is valid.')
     else:
         form = RatingForm(instance=product)
+        messages.info(request, f'You are rating {product.name}')
+
+    template = 'products/rate_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
+
+def review_product(request, product_id):
+    """ allows user to review product """
+    if request.user.username == 'AnonymousUser':
+        messages.error(request, 'Sorry, only registered users can do that.')
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=product)
+        if form.is_valid():
+            form.instance.user_profile = request.user
+            form.save()
+            messages.success(request, 'Thanks for leaving a rating!')
+            return redirect(reverse('product_details', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to leave rating.\
+                Please ensure the form is valid.')
+    else:
+        form = ReviewForm(instance=product)
         messages.info(request, f'You are rating {product.name}')
 
     template = 'products/rate_product.html'
