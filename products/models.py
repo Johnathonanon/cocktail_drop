@@ -1,7 +1,7 @@
 """ Products app models """
 
 from django.db import models
-from django.db.models import Avg, Count
+from django.db.models import Avg
 from django.core.validators import MaxValueValidator, MinValueValidator
 from profiles.models import UserProfile
 
@@ -36,19 +36,15 @@ class Product(models.Model):
 
     def average_rating(self):
         """ calculates average product rating """
-        ratings = self.rating_set.all().values_list('rating')
-        avg_rating = ratings.aggregate(avg=Avg('rating')).get('avg')
-        print(avg_rating)
+        avg_rating = self.rating_set.all().values_list('rating').aggregate(
+            avg=Avg('rating')).get('avg')
         return avg_rating
 
     def count_rating(self):
         """ counts reviews """
-        ratings = Rating.objects.filter(
-            product=self).aggregate(count=Count('id'))
-        cnt = 0
-        if ratings["count"] is not None:
-            cnt = int(ratings["count"])
-        return cnt
+        rating_count = self.rating_set.all().count()
+        print(rating_count)
+        return rating_count
 
     def __str__(self):
         return str(self.name)
@@ -64,6 +60,7 @@ class Rating(models.Model):
         default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def get_product(self):
+        """ get product name for admin """
         return ",".join([str(p) for p in self.product.all()])
 
     def __str__(self):

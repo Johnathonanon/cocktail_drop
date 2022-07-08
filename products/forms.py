@@ -29,3 +29,12 @@ class RatingForm(forms.ModelForm):
         fields = (
             'rating',
         )
+
+    def __init__(self, *args, **kwargs):
+        """
+        custom init method
+        """
+        super().__init__(*args, **kwargs)
+
+        self.fields['rating'].widget.attrs['min'] = 1
+        self.fields['rating'].widget.attrs['max'] = 5

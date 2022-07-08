@@ -208,6 +208,11 @@ select option:active {
     background: #d3d8d1;
 }
 
+#rating-form input{
+    border-color: #333459;
+    border-radius: 0;
+}
+
 /* -------------------- Product Management */
 .product-management-bg {
     background: #E1E6DF;

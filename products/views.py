@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Category, Rating
+from .models import Product, Category
 from .forms import ProductForm, RatingForm
 
 
@@ -141,7 +141,7 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
-def leave_review(request, product_id):
+def rate_product(request, product_id):
     """ allows user to review product """
     if request.user.username == 'AnonymousUser':
         messages.error(request, 'Sorry, only registered users can do that.')
@@ -153,11 +153,19 @@ def leave_review(request, product_id):
         if form.is_valid():
             form.instance.user_profile = request.user
             form.save()
-            messages.success(request, 'Thanks for leaving a review!')
+            messages.success(request, 'Thanks for leaving a rating!')
             return redirect(reverse('product_details', args=[product.id]))
         else:
-            messages.error(request, 'Failed to leave review.\
+            messages.error(request, 'Failed to leave rating.\
                 Please ensure the form is valid.')
     else:
         form = RatingForm(instance=product)
-        messages.info(request, f'You are reviewing {product.name}')
+        messages.info(request, f'You are rating {product.name}')
+
+    template = 'products/rate_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
