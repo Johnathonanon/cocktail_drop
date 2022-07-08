@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
+from profiles.models import UserProfile
 from .models import Product, Category
 from .forms import ProductForm, RatingForm, ReviewForm
 
@@ -147,12 +148,22 @@ def rate_product(request, product_id):
         messages.error(request, 'Sorry, only registered users can do that.')
         return redirect(reverse('home'))
 
-    product = get_object_or_404(Product, pk=product_id)
+    product = Product.objects.get(pk=product_id)
+    profile = get_object_or_404(UserProfile, user=request.user)
+    print(profile.ratings.all())
     if request.method == 'POST':
-        form = RatingForm(request.POST, instance=product)
+
+        # python debugger
+        # more info:
+        # https://docs.python.org/3/library/pdb.html
+        # import pdb; pdb.set_trace()
+
+        form = RatingForm(request.POST)
         if form.is_valid():
-            form.instance.user_profile = request.user
-            form.save()
+            rating = form.save(commit=False)
+            rating.user_profile = profile
+            rating.save()
+            rating.product.add(product)
             messages.success(request, 'Thanks for leaving a rating!')
             return redirect(reverse('product_details', args=[product.id]))
         else:
