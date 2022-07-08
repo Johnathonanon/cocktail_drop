@@ -17,7 +17,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 p-0">
+            <div class="col-12 col-lg-4 p-0">
                 <div class="product-details-container h-80 my-5">
                     {% if request.user.is_superuser %}
                         <small class="float-end m-3 p-2 cart-text text-uppercase" style="background:#E1E6DF">
@@ -25,6 +25,13 @@
                             |
                             <a class="text-danger" href="{% url 'delete_product' product.id %}"> Delete</a>
                         </small>
+                    {% elif request.user.username != 'AnonymousUser' %}
+                        <div>
+                            <a href="" class="float-end search-btn btn text-uppercase rounded-0 m-2">Leave Review</a>
+                        </div>
+                        <div>
+
+                        </div>
                     {% endif %}
                     <p class="my-2 fs-3 p-2">{{ product.name }}</p>
                     <p class="lead my-1 text-left fw-bold p-2">€{{ product.price }}</p>
@@ -35,8 +42,31 @@
                         </a>
                     </p>
                     {% endif %}
-                    {% if rating.rating %}
-                        <small class="p-2"><i class="fas fa-star my-1"></i>User Rating: {{ product.averagerating }} / 5</small>
+                    {% if product.rating_set %}
+                        <div class="p-2">
+                            {% if product.average_rating > 4 %}
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            {% elif product.average_rating > 3 %}
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            {% elif product.average_rating > 2 %}
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            {% elif product.average_rating > 1 %}
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            {% else %}
+                            <span class="fa fa-star checked"></span>
+                            {% endif %}
+                        </div>
+                        <small class="p-2">User Rating: {{ product.average_rating|floatformat:1 }} / 5 - based on {{ product.count_rating }} ratings.</small>
                     {% else %}
                         <small class="p-2">No Rating</small>
                     {% endif %}
@@ -72,10 +102,10 @@
                             </div>
 
                             <div class="col-12">
-                                <a href="{% url 'products' %}" class="search-btn btn text-uppercase rounded-0 m-2">
+                                <a href="{% url 'products' %}" class="shop-button btn text-uppercase rounded-0 m-2">
                                     <i class="fa-solid fa-arrow-left"></i> Keep Shopping
                                 </a>
-                                <input type="submit" class="cart-btn btn text-uppercase rounded-0 m-2" value="Add to Cart">
+                                <input type="submit" class="checkout-btn btn text-uppercase rounded-0 m-2" value="Add to Cart">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>

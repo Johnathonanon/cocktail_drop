@@ -169,15 +169,16 @@ span a{
 
 .product-details-bg {
     background: rgba(144,158,139, 0.4);
+    min-height: 50vh;
 }
 
 .product-details-container {
-    background-color: rgba(147,27,153,0.9);
-    color: #d3d8d1;
+    background-color: #E1E6DF;
+    color: #333459;
 }
 
 .product-details-container a {
-    color: #d3d8d1;
+    color: #333459;
 }
 
 .img-fluid {

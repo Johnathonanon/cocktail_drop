@@ -34,22 +34,20 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
 
-    def averagerating(self):
+    def average_rating(self):
         """ calculates average product rating """
-        review = Rating.objects.filter(
-            product=self).aggregate(average=Avg('rating'))
-        avg = 0
-        if review["average"] is not None:
-            avg = float(review["average"])
-        return avg
+        ratings = self.rating_set.all().values_list('rating')
+        avg_rating = ratings.aggregate(avg=Avg('rating')).get('avg')
+        print(avg_rating)
+        return avg_rating
 
-    def countrating(self):
+    def count_rating(self):
         """ counts reviews """
-        reviews = Rating.objects.filter(
+        ratings = Rating.objects.filter(
             product=self).aggregate(count=Count('id'))
         cnt = 0
-        if reviews["count"] is not None:
-            cnt = int(reviews["count"])
+        if ratings["count"] is not None:
+            cnt = int(ratings["count"])
         return cnt
 
     def __str__(self):
@@ -61,13 +59,15 @@ class Rating(models.Model):
     user_profile = models.ForeignKey(
         UserProfile, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='ratings')
-    product = models.ForeignKey(Product, models.CASCADE, null=True, blank=True)
+    product = models.ManyToManyField(Product)
     rating = models.PositiveSmallIntegerField(
         default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
+    def get_product(self):
+        return ",".join([str(p) for p in self.product.all()])
+
     def __str__(self):
-        return f'This rating is for {self.product}.\
-            You gave this product {self.rating} stars.'
+        return str(self.rating)
 
 
 class Review(models.Model):
@@ -75,7 +75,7 @@ class Review(models.Model):
     user_profile = models.ForeignKey(
         UserProfile, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='reviews')
-    product = models.ForeignKey(Product, models.CASCADE, null=True, blank=True)
+    product = models.ManyToManyField(Product)
     heading = models.CharField(max_length=100, null=True, blank=True)
     comment = models.TextField(max_length=250, null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)

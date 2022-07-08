@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category, Rating
-from .forms import ProductForm
+from .forms import ProductForm, RatingForm
 
 
 def all_products(request):
@@ -17,7 +17,6 @@ def all_products(request):
     categories = None
     sort = None
     direction = None
-    ratings = Rating.objects.all()
 
     if request.GET:
         if 'sort' in request.GET:
@@ -53,7 +52,6 @@ def all_products(request):
 
     context = {
         'products': products,
-        'ratings': ratings,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
@@ -66,10 +64,8 @@ def product_details(request, product_id):
     """ View showing individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    rating = Rating.objects.get(product=product)
     context = {
         'product': product,
-        'rating': rating,
     }
 
     return render(request, 'products/product_details.html', context)
@@ -143,3 +139,25 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+def leave_review(request, product_id):
+    """ allows user to review product """
+    if request.user.username == 'AnonymousUser':
+        messages.error(request, 'Sorry, only registered users can do that.')
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = RatingForm(request.POST, instance=product)
+        if form.is_valid():
+            form.instance.user_profile = request.user
+            form.save()
+            messages.success(request, 'Thanks for leaving a review!')
+            return redirect(reverse('product_details', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to leave review.\
+                Please ensure the form is valid.')
+    else:
+        form = RatingForm(instance=product)
+        messages.info(request, f'You are reviewing {product.name}')

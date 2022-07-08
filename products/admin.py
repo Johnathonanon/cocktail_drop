@@ -1,6 +1,6 @@
 """ Products app admin """
 from django.contrib import admin
-from .models import Product, Category, Rating
+from .models import Product, Category, Rating, Review
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -10,8 +10,8 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'category',
         'price',
-        'rating',
         'image',
+        'average_rating'
     )
 
     ordering = ('name',)
@@ -28,11 +28,21 @@ class CategoryAdmin(admin.ModelAdmin):
 class RatingAdmin(admin.ModelAdmin):
     """ Rating admin class """
     list_display = (
-        'product',
         'rating',
+        'get_product',
+    )
+
+
+class ReviewAdmin(admin.ModelAdmin):
+    """ review admin class """
+    list_display = (
+        'heading',
+        'comment',
+        'created_on',
     )
 
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Rating, RatingAdmin)
+admin.site.register(Review, ReviewAdmin)
