@@ -4,8 +4,8 @@
 {% block content %}
     <div class="container-fluid product-details-bg">
         <div class="row">
-            <div class="col-10 offset-1 col-md-6 col-lg-4 offset-lg-2">
-                <div class="image-container my-5 d-flex justify-content-center">
+            <div class="col-10 col-md-6 mx-auto">
+                <div class="image-container my-4 d-flex justify-content-center">
                     {% if product.image %}
                         <a href="{{ product.image.url }}" target="_blank">
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -17,20 +17,20 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-12 col-lg-4 p-0">
-                <div class="product-details-container h-80 my-5">
+            <div class="col-12 col-md-8 mx-auto">
+                <div class="product-details-container h-80 my-4">
                     {% if request.user.is_superuser %}
                         <small class="float-end m-3 p-2 cart-text text-uppercase" style="background:#E1E6DF">
                             <a style="color:blue" href="{% url 'edit_product' product.id %}">Edit </a>
                             |
                             <a class="text-danger" href="{% url 'delete_product' product.id %}"> Delete</a>
                         </small>
-                    {% elif request.user.username != 'AnonymousUser' %}
+                    {% else %}
                         <div>
                             <a href="{% url 'rate_product' product.id %}" class="float-end auth-btn btn text-uppercase rounded-0 m-2">Rate Product</a>
                         </div>
                         <div>
-
+                            <a href="{% url 'review_product' product.id %}" class="float-end auth-btn btn text-uppercase rounded-0 m-2">Review Product</a>
                         </div>
                     {% endif %}
                     <p class="my-2 fs-3 p-2">{{ product.name }}</p>
@@ -110,6 +110,19 @@
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
                     </form>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 mx-auto my-4">
+                <div class="review-container text-center p-2">
+                    <h4 class="m-4">Product Reviews</h4>
+                    <hr class="w-75 mx-auto">
+                    {% for review in product.review_set.all %}
+                        <div class="review-box w-50 mx-auto my-2">
+                            <h5 class="p-2">{{ review.heading }}</h5>
+                            <p class="fst-italic">{{ review.comment }}</p>
+                            <p>- {{ review.user_profile }} <small>{{ review.created_on }}</small></p>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

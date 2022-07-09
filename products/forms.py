@@ -21,7 +21,7 @@ class ProductForm(forms.ModelForm):
 
 
 class RatingForm(forms.ModelForm):
-    """ product review form class """
+    """ product rating form class """
     class Meta:
         """ meta class """
         model = Rating

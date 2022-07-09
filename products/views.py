@@ -142,12 +142,10 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
+@login_required
 def rate_product(request, product_id):
     """ allows user to rate product """
-    if request.user.username == 'AnonymousUser':
-        messages.error(request, 'Sorry, only registered users can do that.')
-        return redirect(reverse('home'))
-
+    
     product = Product.objects.get(pk=product_id)
     profile = get_object_or_404(UserProfile, user=request.user)
     print(profile.ratings.all())
@@ -182,28 +180,29 @@ def rate_product(request, product_id):
     return render(request, template, context)
 
 
+@login_required()
 def review_product(request, product_id):
     """ allows user to review product """
-    if request.user.username == 'AnonymousUser':
-        messages.error(request, 'Sorry, only registered users can do that.')
-        return redirect(reverse('home'))
 
-    product = get_object_or_404(Product, pk=product_id)
+    product = Product.objects.get(pk=product_id)
+    profile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
-        form = ReviewForm(request.POST, instance=product)
+        form = ReviewForm(request.POST)
         if form.is_valid():
-            form.instance.user_profile = request.user
-            form.save()
-            messages.success(request, 'Thanks for leaving a rating!')
+            review = form.save(commit=False)
+            review.user_profile = profile
+            review.save()
+            review.product.add(product)
+            messages.success(request, 'Thanks for leaving a review!')
             return redirect(reverse('product_details', args=[product.id]))
         else:
-            messages.error(request, 'Failed to leave rating.\
+            messages.error(request, 'Failed to leave review.\
                 Please ensure the form is valid.')
     else:
         form = ReviewForm(instance=product)
-        messages.info(request, f'You are rating {product.name}')
+        messages.info(request, f'You are reviewing {product.name}')
 
-    template = 'products/rate_product.html'
+    template = 'products/review_product.html'
     context = {
         'form': form,
         'product': product,

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid product-details-bg">
+        <div class="row">
+            <div class="col-10 offset-1 col-md-6 col-lg-4 offset-lg-2">
+                <div class="image-container my-5 d-flex justify-content-center">
+                    {% if product.image %}
+                        <a href="{{ product.image.url }}" target="_blank">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </a>
+                        {% else %}
+                        <a href="">
+                            <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ product.name }}">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 p-0">
+                <div class="product-details-container h-80 my-5">
+                    {% if request.user.is_superuser %}
+                        <small class="float-end m-3 p-2 cart-text text-uppercase" style="background:#E1E6DF">
+                            <a style="color:blue" href="{% url 'edit_product' product.id %}">Edit </a>
+                            |
+                            <a class="text-danger" href="{% url 'delete_product' product.id %}"> Delete</a>
+                        </small>
+                    {% endif %}
+                    <p class="my-2 fs-3 p-2">{{ product.name }}</p>
+                    <p class="lead my-1 text-left fw-bold p-2">€{{ product.price }}</p>
+                    {% if product.category %}
+                    <p class="small my-1 mb-0 p-2">
+                        <a href="{% url 'products' %}?category={{ product.category.name }}">
+                            <i class="fa-solid fa-wine-bottle mr-1"></i> {{ product.category.friendly_name }}
+                        </a>
+                    </p>
+                    {% endif %}
+                    {% if product.rating_set %}
+                        <div class="p-2">
+                            {% if product.average_rating > 4 %}
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            {% elif product.average_rating > 3 %}
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            {% elif product.average_rating > 2 %}
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            {% elif product.average_rating > 1 %}
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            {% else %}
+                            <span class="fa fa-star checked"></span>
+                            {% endif %}
+                        </div>
+                        <small class="p-2">User Rating: {{ product.average_rating|floatformat:1 }} / 5 - based on {{ product.count_rating }} ratings.</small>
+                    {% else %}
+                        <small class="p-2">No Rating</small>
+                    {% endif %}
+                    <p class="my-2 p-2">{{ product.description }}</p>
+                    <h4 class="my-2 p-2">Please write review below</h4>
+                    <form class="m-2" action="{% url 'review_product' product.id %}" method="POST" id="review-form">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="auth-btn btn rounded-0 text-uppercase my-2">Review Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
