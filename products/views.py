@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from profiles.models import UserProfile
-from .models import Product, Category
+from .models import Product, Category, Rating, Review
 from .forms import ProductForm, RatingForm, ReviewForm
 
 
@@ -145,10 +145,16 @@ def delete_product(request, product_id):
 @login_required
 def rate_product(request, product_id):
     """ allows user to rate product """
-    
+
     product = Product.objects.get(pk=product_id)
     profile = get_object_or_404(UserProfile, user=request.user)
-    print(profile.ratings.all())
+    user_rating = Rating.objects.filter(product=product, user_profile=profile)
+
+    if user_rating:
+        messages.error(request, 'You have already rated this product.\
+            Why not rate a different product?')
+        return redirect(reverse('product_details', args=[product.id]))
+
     if request.method == 'POST':
 
         # python debugger
@@ -186,6 +192,13 @@ def review_product(request, product_id):
 
     product = Product.objects.get(pk=product_id)
     profile = get_object_or_404(UserProfile, user=request.user)
+    user_review = Review.objects.filter(product=product, user_profile=profile)
+
+    if user_review:
+        messages.error(request, 'You have already reviewed this product.\
+            Please feel free to review another of our delicious creations!')
+        return redirect(reverse('product_details', args=[product.id]))
+
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
