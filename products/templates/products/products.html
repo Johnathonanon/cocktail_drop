@@ -58,7 +58,7 @@
                         {% else %}
                         <a href="{% url 'product_details' product.id %}">
                             <img class="card-img-top img-fluid rounded-0"
-                                src="{% if DEBUG %}/media/noimageimg.png{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1656259814/media/noimage_ycwynf.png{% endif %}"
+                                src="{% if DEBUG %}{{ MEDIA_URL }}no_image.jpg{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1657470999/media/no_image_qclmpn.jpg{% endif %}"
                                 alt="{{ product.name }}">
                         </a>
                         {% endif %}
