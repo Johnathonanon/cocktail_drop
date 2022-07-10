@@ -18,21 +18,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-8 mx-auto">
-                <div class="product-details-container h-80 my-4">
-                    {% if request.user.is_superuser %}
-                        <small class="float-end m-3 p-2 cart-text text-uppercase" style="background:#E1E6DF">
-                            <a style="color:blue" href="{% url 'edit_product' product.id %}">Edit </a>
-                            |
-                            <a class="text-danger" href="{% url 'delete_product' product.id %}"> Delete</a>
-                        </small>
-                    {% else %}
-                        <div>
-                            <a href="{% url 'rate_product' product.id %}" class="float-end auth-btn btn text-uppercase rounded-0 m-2">Rate Product</a>
-                        </div>
-                        <div>
-                            <a href="{% url 'review_product' product.id %}" class="float-end auth-btn btn text-uppercase rounded-0 m-2">Review Product</a>
-                        </div>
-                    {% endif %}
+                <div class="product-details-container h-80 my-4 text-center">
                     <p class="my-2 fs-3 p-2">{{ product.name }}</p>
                     <p class="lead my-1 text-left fw-bold p-2">€{{ product.price }}</p>
                     {% if product.category %}
@@ -70,13 +56,19 @@
                     {% else %}
                         <small class="p-2">No Rating</small>
                     {% endif %}
+                    {% if user.is_authenticated %}
+                    <div class="col-12">
+                        <a href="{% url 'rate_product' product.id %}" class="auth-btn btn text-uppercase rounded-0 m-2">Rate Product</a>
+                        <a href="{% url 'review_product' product.id %}" class="auth-btn btn text-uppercase rounded-0 m-2">Review Product</a>
+                    </div>
+                    {% endif %}
                     <p class="my-2 p-2">{{ product.description }}</p>
                     <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="col-12">
                                 <p class="my-1 p-2 fs-5">Quantity:</p>
-                                <div class="form-group w-50 p-2 mb-2">
+                                <div class="form-group w-50 p-2 mb-2 mx-auto">
                                     <div class="input-group input-group-{{ product.id }}">
                                         <div class="input-group-prepend">
                                             <button class="decrement-qty btn quantity-btn rounded-0 decrement-qty_{{ product.id }}" 
@@ -110,6 +102,13 @@
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
                     </form>
+                    {% if request.user.is_superuser %}
+                    <small class="float-end p-2 cart-text text-uppercase" style="background:#E1E6DF">
+                        <a style="color:blue" href="{% url 'edit_product' product.id %}">Edit </a>
+                        |
+                        <a class="text-danger" href="{% url 'delete_product' product.id %}"> Delete</a>
+                    </small>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-12 col-md-8 mx-auto my-4">

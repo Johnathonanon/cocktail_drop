@@ -14,6 +14,7 @@ def all_products(request):
     """ View showing all products, including sorting and search queries """
 
     products = Product.objects.all()
+
     query = None
     categories = None
     sort = None
@@ -50,6 +51,8 @@ def all_products(request):
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
+
+    products = list(set(list(products)))
 
     context = {
         'products': products,
@@ -156,11 +159,6 @@ def rate_product(request, product_id):
         return redirect(reverse('product_details', args=[product.id]))
 
     if request.method == 'POST':
-
-        # python debugger
-        # more info:
-        # https://docs.python.org/3/library/pdb.html
-        # import pdb; pdb.set_trace()
 
         form = RatingForm(request.POST)
         if form.is_valid():
