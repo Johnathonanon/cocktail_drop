@@ -1,108 +1,118 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Cocktail Drop E-commerce Website
 
-Welcome Johnathonanon,
+Cocktail Drop is a fully-functioning, interactive web application built using django, postgresql, bootstrap and deployed to heroku. People who participate in Precision Rifle Series can use the web application to trade and sell firearms. Precision Rifle Series is a rifle-based shooting sport that has championship style competitiors. Points can be collected from competitions and is a hobby enjoyed by people across the world. Of course, there are other competitive shooting sports that can also gain benefit from using the web application. Users can log-in, sign-up, post an advert and use contact information on an advert to commumicate with the seller. An agreenment can be made between the seller and buyer. Currently, web applications that fit into this category are few and far between. The web application is not limited to firearms, but scopes, accessories and ammunition can be traded as well. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
 
-## Gitpod Reminders
+The live link can be found here - https://firearmexchange.herokuapp.com/
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Initial brainstorming, planning and pitch of the web application: 
 
-`python3 -m http.server`
+![Picture of planning diagram](static/readme_images/received_1181933939223231.webp) 
 
-A blue button should appear to click: _Make Public_,
+AmIResponsive snip
 
-Another blue button should appear to click: _Open Browser_.
+![Picture of AmIResponsive snip](static/readme_images/amiresponsive.png) 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## How to use the Web Application
 
-A blue button should appear to click: _Make Public_,
+The web application is used by users who wish to view adverts for firearm equipment, accessories, optics and ammunition. If the user wishes to post an advert to potentially sell or trade their item, they will need to create an account. This is done by clicking the "Register" button in the right hand corner of the header. Once done so, the user can log into their account and post an advert. Contact details should be inserted into the advert so that potential buyers can contact the seller. Once logged in, registered users can view their own adverts while also looking at adverts from other sellers. 
 
-Another blue button should appear to click: _Open Browser_.
+## Features
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Existing Features
 
-To log into the Heroku toolbelt CLI:
+- **User Walkthrough**
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+The user is greeted with the home page intially. The header contains the logo on the left hand side, which if clicked brings the user back to the homepage. On the right hand side of the header we have "Home", which if clicked brings the user to the homepage. Not every user will be aware that the logo could also bring them back to the homepage, ergo, the "Home" button was implemented. 
+![Picture of Index Page - logged out](static/readme_images/indexpage1.png)
+Next to the "Home" button is the "Register" button. If "Register" is clicked, the following page is displayed: 
+![Picture of Sign Up Page](static/readme_images/SignUp.png)
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+Next to the "Register" button is the "Login" button when clicked looks like the image below:
+![Picture of Login Page](static/readme_images/SignIn.png)
 
-------
+To create an account with Firearm Exchange, simply click "Register" and fill out the required information. See image below for guidance:
+![Picture of Filling out Registration Details](static/readme_images/RegisteringInfo.png)
 
-## Release History
+Once Registration information is filled in, click the green "Sign Up" button. Now that an account has been created, clicking the "Login" button and filling out the same information used to register the account will allow us to sign into the account. Once the screen looks like the image below, you are ready to sign in to the account by clicking the green "Sign In" button.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+![Picture of Filling out Signing In Details to Login](static/readme_images/Signingintoaccount.png)
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+After logging into the account, the header will then look like the below image:
+![Picture of Header after Logging In](static/readme_images/afterloggingin.png)
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+On the right hand side, the "Home" button is still present and will bring you to the homepage of the web application. Next to that is a drop down menu named "My F|E". If clicked this will display the following option:
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+![Picture of drop down menu](static/readme_images/dropdownmenu6.png)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+If "My Advert" is clicked on, this will bring the web application user to the accounts list of posted adverts on Eirearm Exchange. Since this account does not have any listed adverts, this page is blank for now. 
+![Picture of Blank My Adverts List](static/readme_images/myadvertsblank.png)
+And with a populated list.
+![Picture of Populated My Adverts List](static/readme_images/myadvertspopulated.png)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+Next to the "My F|E" drop down menu is the "Logout" button. If clicked this will promptly log the user out of their account. This Button only appears if the user is logged into the web application. Next to the "Logout" button is the green "Post Advert" button. If clicked, it will bring the user to this page: 
+![Picture of Blank Post Advert Page](static/readme_images/AdvertBlank.png)
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+If All of the information is filled out, the web application user can click "Post Advert". This will allow the user to post an advert about their item that they wish to sell or trade. See the image below as an example:
+![Picture of Filled in Information Post Advert Page](static/readme_images/blasteradexample.png)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+Once information is filled in to the users desire, the advert can be posted by clicking the green button "Post Advert".
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+Adverts are then used to populate the "Latest Adverts" list on the home page.
+![Picture of Index Page - logged in](static/readme_images/indexpage2.png)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+- **Back End**
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+  - The main data structure used in this application is the Advert Model. This is then used to populate a form, which in turn is rendered to the user via a view, and a template, and allows them to create an advert. The index page populates a list of all Advert objects in the databse sorting by most recently created. 
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+  - The My Adverts page allows users to view their own posted adverts with the option to edit or delete as required. Thus full CRUD functionality is implemented.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Features Left to Implement
 
-------
+- A Search bar was orginally planned to be in the project. This would allow the user of the web application to search for desired adverts and find what they were looking for with ease. Time did not permit this feature to be fully implemented. 
 
-## FAQ about the uptime script
+- A messaging system was attempted to implement into the web application. The purpose was to allow user to user private interaction. This would allow communication between potential buyers and sellers. After much effort, tutoring support said the task would be too complicated and insinuated that it would be best to leave this feature on the back burner. 
 
-**Why have you added this script?**
+- A tag system. Tags would appear at the bottom of an advert that a seller could decide on. If the advert was about an optics item, they could tag the bottom of the advert page with #opticalequipment and that would allow users who use similar words with the search function to ping the advert not only through words used, but also tags. 
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+- A commenting system on the advert. This was attempted, and followed the tutorial provided by the module but actually getting it to be fully working was just out of my grasp. I would be reminded by tutoring support that I should go to my mentor with this issue, but when doing so, my mentor would tell me to go to tutoring support. The full circle process would take hours. 
 
-**How will this affect me?**
+## Testing
+The application has been consistently tested throughout its development by both myself and others. The gender and age of testers varied, with age ranging from 20s to 60s and testers having a diverse range of computer knowledge, and each tester found the application intuitive and easy to use.
+ 
+Several bugs were found in development but all were corrected to the best of my knowledge at the submission of this project. 
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+The site had many issues during production but these were ultimately rectified thanks to help from tutor support, online resource, and avid troublshooting.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+All code was passed throught the PEP8 linter and passing ok.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+### Validator Testing
 
-**So….?**
+PEP8 linter - http://pep8online.com/
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+### Unfixed Bugs
 
-**Can I opt out?**
+- Unaware of unfixed bigs at time of submission
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+## Deployment
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+- The site was deployed to Heroku. The steps to deploy are as follows:
+  - Create a heroku account
+  - Select create new app on heroku dashboard, and fill out necessary requirements (name, etc.).
+  - Select to add postgresql databse to app.
+  - Once app is created, navigate to 'settings'. Set your config vars ie. database url, secret key. 
+  - Next navigate to 'deploy'. For this project the deployment method chosen was Github. The relevant github account and repository must be connected and then either manual or automatic deployment chosen.
+  - Once the app is succesfully built it will then be deployed and be 'live'
 
-**Anything more?**
+The live link can be found here - https://firearmexchange.herokuapp.com/
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+## Credits
 
----
+I am grateful to the Code Institute tutors for their patient help with this project. Without them it would not have gone nearly so smoothly.
 
-Happy coding!
+My mentor was very helpful and his knowledge and experience is highly appreciated.
+
+Many elements of this project were created using bootstrap official docs - https://getbootstrap.com/docs/5.1/getting-started/introduction/
