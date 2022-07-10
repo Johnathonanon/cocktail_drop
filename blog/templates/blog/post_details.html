@@ -4,7 +4,7 @@
 {% block content %}
     <div class="container-fluid blog-bg">
         <div class="row">
-            <div class="col-10 col-lg-6 mx-auto">
+            <div class="col-10 col-md-6 mx-auto">
                 <div class="row mx-auto py-4">
                     {% if post.image %}
                         <img class="" src="{{ post.image.url }}" alt="{{ post.name }}">
@@ -13,7 +13,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-10 col-lg-6 mx-auto">
+            <div class="col-10 col-md-8 mx-auto">
                 <div class="row blog-container mx-auto my-4">
                     <h5 class="my-auto p-4 text-center">{{ post.title }}</h5>
                     <p class="py-0">{{ post.author }}</p>
