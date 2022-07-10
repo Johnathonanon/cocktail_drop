@@ -77,8 +77,10 @@ class Review(models.Model):
         UserProfile, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='reviews')
     product = models.ManyToManyField(Product)
-    heading = models.CharField(max_length=100, null=True, blank=True)
-    comment = models.TextField(max_length=250, null=True, blank=True)
+    heading = models.CharField(
+        max_length=100, null=False, blank=False, default='')
+    comment = models.TextField(
+        max_length=250, null=False, blank=False, default='')
     created_on = models.DateTimeField(auto_now_add=True)
 
     def get_product(self):
