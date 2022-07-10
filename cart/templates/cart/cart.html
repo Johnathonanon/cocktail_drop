@@ -126,7 +126,7 @@
                             <img class="img-thumbnail rounded-0" src="{{ item.product.image.url }}"
                                 alt="{{ item.product.name }}">
                             {% else %}
-                            <img class="img-thumbnail rounded-o" src="{{ MEDIA_URL}}no_image.jpg" alt="{{ item.product.name }}">
+                            <img class="img-thumbnail rounded-o" src="{% if DEBUG %}{{ MEDIA_URL }}no_image.jpg{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1657470999/media/no_image_qclmpn.jpg{% endif %}" alt="{{ item.product.name }}">
                             {% endif %}
                         </td>
                         <td class="p-2">
