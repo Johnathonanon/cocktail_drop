@@ -1,4 +1,4 @@
-""" product app forms test file """
+""" profile app forms test file """
 from django.test import TestCase
 from .forms import UserProfileForm
 
