@@ -21,17 +21,17 @@
                 </div>
                 <div class="row">
                     {% for post in posts %}
-                        <div class="col-12 my-2">
+                        <div class="col-12 col-xl-8 offset-xl-2 my-2">
                             <div class="card blog-card h-100">
                                 <div class="row g-0">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 my-auto">
                                         {% if post.featured_image %}
                                     <a href="{% url 'post_details' post.id %}">
-                                        <img class="card-img-top img-fluid rounded-0" src="{{ post.image.url }}" alt="{{ product.name }}">
+                                        <img class="img-thumbnail rounded-0" src="{{ post.featured_image.url }}" alt="{{ product.name }}">
                                     </a>
                                     {% else %}
                                     <a href="{% url 'post_details' post.id %}">
-                                        <img class="card-img-top img-fluid rounded-0" src="{% if DEBUG %}{{ MEDIA_URL }}defaultblogimg.jpg{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1657118779/media/defaultblogimg_wcovym.jpg{% endif %}" alt="{{ product.name }}">
+                                        <img class="img-thumbnail rounded-0" src="{% if DEBUG %}{{ MEDIA_URL }}defaultblogimg.jpg{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1657118779/media/defaultblogimg_wcovym.jpg{% endif %}" alt="{{ post.name }}">
                                     </a>
                                     {% endif %}
                                     </div>

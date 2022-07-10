@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-10 col-md-6 mx-auto">
                 <div class="row mx-auto py-4">
-                    {% if post.image %}
-                        <img class="" src="{{ post.image.url }}" alt="{{ post.name }}">
+                    {% if post.featured_image %}
+                        <img class="" src="{{ post.featured_image.url }}" alt="{{ post.name }}">
                         {% else %}
                         <img class="" src="{% if DEBUG %}{{ MEDIA_URL}}default_blog_img.jpg{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1657118779/media/defaultblogimg_wcovym.jpg{% endif %}" alt="{{ post.name }}">
                     {% endif %}
