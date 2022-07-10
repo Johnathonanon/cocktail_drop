@@ -12,7 +12,7 @@
                         </a>
                         {% else %}
                         <a href="">
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ product.name }}">
+                            <img class="card-img-top img-fluid" src="{% if DEBUG %}{{ MEDIA_URL}}no_image.jpg{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1657470999/media/no_image_qclmpn.jpg{% endif %}" alt="{{ product.name }}">
                         </a>
                     {% endif %}
                 </div>

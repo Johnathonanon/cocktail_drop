@@ -31,7 +31,7 @@
                                     </a>
                                     {% else %}
                                     <a href="{% url 'post_details' post.id %}">
-                                        <img class="card-img-top img-fluid rounded-0" src="{% if DEBUG %}/media/defaultblogimg.jpg{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1657118779/media/defaultblogimg_wcovym.jpg{% endif %}" alt="{{ product.name }}">
+                                        <img class="card-img-top img-fluid rounded-0" src="{% if DEBUG %}{{ MEDIA_URL }}defaultblogimg.jpg{% else %}https://res.cloudinary.com/dgosfiw2e/image/upload/v1657118779/media/defaultblogimg_wcovym.jpg{% endif %}" alt="{{ product.name }}">
                                     </a>
                                     {% endif %}
                                     </div>
