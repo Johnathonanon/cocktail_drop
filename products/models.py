@@ -61,7 +61,7 @@ class Rating(models.Model):
         null=True, blank=True, related_name='ratings')
     product = models.ManyToManyField(Product)
     rating = models.PositiveSmallIntegerField(
-        default="", validators=[MinValueValidator(1), MaxValueValidator(5)])
+        default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def get_product(self):
         """ get product name for admin """
