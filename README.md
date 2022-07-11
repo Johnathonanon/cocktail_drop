@@ -16,6 +16,13 @@ The web application is used by users who wish to order a selection of cocktails 
 
 An agile approach was taken in development and a total of 28 user stories completed during the process. These can be found at: https://github.com/Johnathonanon/cocktail_drop/projects/1
 
+## Marketing
+A Facebook business page was set up for this business and can be found at: https://www.facebook.com/Cocktail-Drop-102099425886207/
+
+![Picture of Facebook 1](media/facebook_1.png)
+![Picture of Facebook 2](media/facebook_2.png)
+![Picture of FAcebook 3](media/facebook_3.png)
+
 ## Features
 
 ### Existing Features
