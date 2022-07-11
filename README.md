@@ -14,6 +14,8 @@ AmIResponsive snip
 
 The web application is used by users who wish to order a selection of cocktails for home delivery. Orders can be placed by anonymous users, however a user must have an account in order to review and rate products, as well as saving their delivery details and order history. This is done by clicking the "Register" button in the right hand corner of the header. Once done so, the user can log into their account and benefit from the additionally functionality. As a site owner, signing in allows the addition/editing/deletion of products and blogposts.
 
+An agile approach was taken in development and a total of 28 user stories completed during the process. These can be found at: https://github.com/Johnathonanon/cocktail_drop/projects/1
+
 ## Features
 
 ### Existing Features
@@ -134,6 +136,28 @@ PEP8 linter - http://pep8online.com/
   - Once app is created, navigate to 'settings'. Set your config vars ie. database url, secret key. 
   - Next navigate to 'deploy'. For this project the deployment method chosen was Github. The relevant github account and repository must be connected and then either manual or automatic deployment chosen.
   - Once the app is succesfully built it will then be deployed and be 'live'
+
+## Requirements
+- The following were used in this project
+  - asgiref==3.5.2
+  - cloudinary==1.29.0
+  - crispy-bootstrap5==0.6
+  - dj-database-url==0.5.0
+  - dj3-cloudinary-storage==0.0.6
+  - Django==3.2
+  - django-allauth==0.51.0
+  - django-crispy-forms==1.14.0
+  - gunicorn==20.1.0
+  - oauthlib==3.2.0
+  - Pillow==9.1.1
+  - psycopg2==2.9.3
+  - PyJWT==2.4.0
+  - python3-openid==3.2.0
+  - pytz==2022.1
+  - requests-oauthlib==1.3.1
+  - sqlparse==0.4.2
+  - stripe==3.5.0
+
 
 The live link can be found here - https://cocktail-drop.herokuapp.com/
 
