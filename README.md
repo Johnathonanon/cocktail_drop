@@ -2,7 +2,7 @@
 
 Cocktail Drop is a fully-functioning, interactive web application built using django, postgresql, bootstrap, stripe for payments, and deployed to heroku. Cocktail Drop is designed as a fullstack e-commerce website, with both front and back end functionality. The purpose of Cocktail Drop is to allow users to order a selection of cocktails online to be delivered to them at home. Currently, the site has an 'inventory' of 44 cocktails, and delivers to the areas of Dublin 1, 2, 4, 6, 7, 8, and 12. Delivery is a flat rate of €5 or free on orders over €100. Users can sign-up, log-in, review cocktails. rate cocktails, view previous orders, and of course order cocktails for delivery, specifying a desired time and date. Users can also choose to save their delivery information to their profile for futute orders. A review and rating can only be left once per user, and these are diplayed on the product page, so as to allow users to express their opinions on the different cocktails. The site also has a blog section, in which the site owner can create a post for users to view. The purpose of this section is for the site owner, and the employed mixologists to share tips, tricks and even just interesting trivia with people who may be interested.
 
-
+This is considered a B2C ecommerce model, as the business is selling to an individual customer, as oppposed to B2B, a business selling to another business.
 
 The live link can be found here - https://cocktail-drop.herokuapp.com/
 
